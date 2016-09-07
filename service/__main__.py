@@ -1,5 +1,6 @@
 import ucwa.actions as actions
 from ucwa.config import load_config
+import ucwa.events
 from ucwa.events import process_events
 
 from contextlib import closing
@@ -59,6 +60,12 @@ events_stream = actions.oauth_stream_request(event_url, token, config['redirect_
 
 event_list = {}
 
+
+def handle_message(inbound_message, thread_uri, resource):
+    pass
+
+ucwa.events.MESSAGE_CALLBACK = handle_message
+
 while True:
     with closing(events_stream) as r:
         # Do things with the response here.
@@ -75,3 +82,4 @@ while True:
         resource + event_response['_links']['next']['href'],
         token,
         config['redirect_uri'])
+
