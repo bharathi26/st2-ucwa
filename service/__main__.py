@@ -62,6 +62,8 @@ event_list = {}
 
 
 def handle_message(inbound_message, thread_uri, resource):
+    # I have a string (message) and some context (dict(uri:thread_uri, resource:resource))
+    # how do I get that into stackstorm to execute the alias.
     pass
 
 ucwa.events.MESSAGE_CALLBACK = handle_message
